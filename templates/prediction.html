@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personality Prediction Result</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url("{{ url_for('static', filename='bg.jpeg') }}");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+      color: rgb(17, 5, 77);
+      text-align: center;
+      font-weight: bold;
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: rgb(71, 2, 2);
+      font-family: Helvetica, sans-serif;
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      width: 80%;
+      margin-bottom: 20px;
+    }
+
+    .list-container {
+      width: 50%; /* 50% width for each container */
+      overflow-y: auto; /* Enable vertical scrollbar if content exceeds container height */
+      padding: 10px; /* Add padding for aesthetics */
+      border: 2px solid black;
+      border-radius: 5px;
+      margin: 2rem;
+    }
+
+    .job-container, .personality-container {
+      max-height: 300px; /* Set max height for the job recommendations and personality characteristics windows */
+    }
+
+    .list-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      color: black;
+      font-family: Helvetica, sans-serif;
+      background-color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      text-align: left;
+      padding: 10px;
+      margin-bottom: 5px;
+      border-radius: 5px;
+    }
+
+    a {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      margin: 1.5rem;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    a:hover {
+      background-color: #cc0d20;
+    }
+  </style>
+</head>
+<body>
+  <h1>Personality Prediction Result</h1>
+  <p>Username: {{ username }}</p>
+  <p>Predicted Personality Type: {{ predicted_type }}</p>
+
+  <div class="container">
+    <div class="list-container job-container">
+      <h2 class="list-title">Job Recommendations:</h2>
+      <ul>
+        {% for job in jobs %}
+          <li>{{ job }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="list-container personality-container">
+      <h2 class="list-title">Personality Characteristics:</h2>
+      <ul>
+        {% for characteristic in characteristics %}
+          <li>{{ characteristic }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <a href="/" class="button">Back to Home</a>
+</body>
+</html>

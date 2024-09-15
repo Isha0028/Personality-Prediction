@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Twitter Personality Prediction</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url("{{url_for('static', filename='bg.jpeg')}}");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    h1 {
+      color: #11054d;
+      padding: 2rem;
+      text-align: center;
+      font-weight: bold;
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: #470202;
+      font-family: Helvetica, sans-serif;
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      background: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    button {
+      border: none;
+      padding: 12px;
+      width: 100%;
+      font-size: 1.2rem;
+      border-radius: 5px;
+      font-weight: bold;
+      background-color: #049f95;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    button:hover {
+      background-color: #049087;
+    }
+
+    input:focus {
+      outline: none;
+      border: 2px solid #11054d;
+    }
+  </style>
+</head>
+<body>
+  <h1>Myers-Briggs Personality Type Classification</h1> 
+  <form action="{{url_for('prediction')}}" method="post">
+    <input type="text" name="handle" placeholder="Twitter Username" required>
+    <button type="submit" value="Predict">Predict Personality</button>
+  </form>
+</body>
+</html>
